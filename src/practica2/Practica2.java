@@ -11,8 +11,11 @@ public class Practica2 {
 
     
     public static void main(String[] args) {
-        String user="alexandra";  //se inicializa con el usuario
-        String url="jdbc:mysql://db4free.net/contabilidad_pl";
+        String user2="alexandra";  //se inicializa con el usuario
+        String url2="jdbc:mysql://db4free.net/contabilidad_pl";
+        String password2="noravalencia";
+        String user="root";  //se inicializa con el usuario
+        String url="jdbc:mysql://localhost/contabilidad_pl";
         String password="noravalencia";
         ResultSet resultado;
         /////////////////////////////////////////////////////
@@ -38,10 +41,10 @@ public class Practica2 {
         try{
             System.out.println("Conectando a base de datos ...");
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con=DriverManager.getConnection(url,user,password);
+            Connection con=DriverManager.getConnection(url2,user2,password2);
             Statement estado= con.createStatement();
             
-             do{
+             do{System.out.println("\n");
                 System.out.println("Ingrese la operacion que desea realizar");
                 System.out.println("1. Agregar producto");
                 System.out.println("2. Buscar producto");
@@ -50,6 +53,7 @@ public class Practica2 {
                 System.out.println("5. Realizar venta");
                 System.out.println("6. Mostrar ganancias totales");
                 System.out.println("7. Salir");
+                System.out.print("Opcion: ");
                 op=scanf.nextInt();
                 switch(op){
                     case 1:
@@ -189,7 +193,11 @@ public class Practica2 {
                                 total_venta=venta*precio;
                                 estado.executeUpdate("UPDATE `productos` SET `cantidad`='"+cantidad+"' WHERE`nameProducto`='"+data+"' ");
                                 estado.executeUpdate("UPDATE `productos` SET `totalVenta`='"+total_venta+"' WHERE`nameProducto`='"+data+"' ");
+                                System.out.println("Valor de la venta: "+(auxi*precio));
+                                System.out.println("Venta realizada excitosamente .....");
+                                
                                 }
+                            
                         }
                         break;
                     case 6:
